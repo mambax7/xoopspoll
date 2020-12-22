@@ -20,6 +20,14 @@
 $moduleDirName      = basename(dirname(__DIR__));
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
+$moduleHandler = \xoops_getHandler('module');
+$configHandler = \xoops_getHandler('config');
+$sys_module = $moduleHandler->getByDirname('system');
+$sys_id     = $sys_module->getVar('mid');
+$sys_config = $configHandler->getConfigsByCat(0, $sys_id);
+
+$myts = \MyTextSanitizer::getInstance();
+
 return (object)[
     'name'           => $moduleDirNameUpper . ' Module Configurator',
     'paths'          => [
@@ -93,8 +101,8 @@ return (object)[
         'width'  => '100%',
         'height' => '350px',
         'name'   => 'description',
-        //                           'value'  => $myts->stripSlashesGPC($this->getVar('description'))
-        'value'  => $myts->htmlSpecialChars($this->getVar('description')),
+        //                           'value'  => $myts->stripSlashesGPC($this->getVar('description'))       
+        'value'  => '', //'value'  => $myts->htmlSpecialChars($this->getVar('description')),
     ],
 
 
