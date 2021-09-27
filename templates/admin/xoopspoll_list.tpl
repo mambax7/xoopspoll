@@ -53,30 +53,16 @@
                     <td class='center'><{$pollItem.votes}></td>
                     <td class='center'><{$pollItem.xuStartFormattedTime}></td>
                     <td class='center'><{$pollItem.end}></td>
-                    <td class='center'>
-                        <{html_image file=$pollItem.buttons.edit.file href=$pollItem.buttons.edit.href
-                        alt=$pollItem.buttons.edit.alt title=$pollItem.buttons.edit.alt}>
-                        <{html_image file=$pollItem.buttons.clone.file href=$pollItem.buttons.clone.href
-                        alt=$pollItem.buttons.clone.alt title=$pollItem.buttons.clone.alt}>
-                        <{html_image file=$pollItem.buttons.delete.file href=$pollItem.buttons.delete.href
-                        alt=$pollItem.buttons.delete.alt title=$pollItem.buttons.delete.alt}>
-                        <{html_image file=$pollItem.buttons.log.file href=$pollItem.buttons.log.href
-                        alt=$pollItem.buttons.log.alt title=$pollItem.buttons.log.alt}>
-                        <{*
-                                <a href='" . $_SERVER['SCRIPT_NAME'] . "?op=edit&amp;poll_id={$id}'>
-                                  <img src='" . $pathIcon16 . DIRECTORY_SEPARATOR . "edit.png' alt='" . _AM_XOOPSPOLL_EDITPOLL . "' title='" . _AM_XOOPSPOLL_EDITPOLL . "'>
-                                </a>
-                                <a href='" . $_SERVER['SCRIPT_NAME'] . "?op=clone&amp;poll_id={$id}'>
-                                  <img src='" . $pathIcon16 . DIRECTORY_SEPARATOR . "editcopy.png' alt='" . _AM_XOOPSPOLL_CLONE . "' title='" . _AM_XOOPSPOLL_CLONE."'>
-                                </a>
-                                <a href='" . $_SERVER['SCRIPT_NAME'] . "?op=delete&amp;poll_id={$id}'>
-                                  <img src='" . $pathIcon16 . DIRECTORY_SEPARATOR . "delete.png' alt='" . _DELETE . "' title='" . _DELETE . "'>
-                                </a>
-                                <a href='" . $_SERVER['SCRIPT_NAME'] . "?op=log&amp;poll_id={$id}'>
-                                  <img src='" . $pathIcon16 . DIRECTORY_SEPARATOR . "search.png' alt='" . _AM_XOOPSPOLL_VIEWLOG . "' title='" . _AM_XOOPSPOLL_VIEWLOG."'>\n"
-                                </a>
-                        *}>
-                    </td>
+					<td class="xo-actions txtcenter">
+						<a class="tooltip" href="main.php?op=clone&amp;poll_id==<{$pollItem.id}>" title="<{$smarty.const._AM_XOOPSPOLL_CLONE}>">
+							<img src="<{xoAdminIcons clone.png}>" alt="<{$smarty.const._AM_XOOPSPOLL_CLONE}>"></a>
+						<a class="tooltip" href="main.php?op=edit&amp;poll_id=<{$pollItem.id}>" title="<{$smarty.const._AM_XOOPSPOLL_EDITPOLL}>">
+							<img src="<{xoAdminIcons edit.png}>" alt="<{$smarty.const._AM_XOOPSPOLL_EDITPOLL}>"></a>
+						<a class="tooltip" href="main.php?op=delete&amp;poll_id=<{$pollItem.id}>" title="<{$smarty.const._DELETE}>">
+							<img src="<{xoAdminIcons delete.png}>" alt="<{$smarty.const._DELETE}>"></a>
+						<a class="tooltip" href="main.php?op=log&amp;poll_id=<{$pollItem.id}>" title="<{$smarty.const._AM_XOOPSPOLL_VIEWLOG}>">
+							<img src="<{xoAdminIcons view.png}>" alt="<{$smarty.const._AM_XOOPSPOLL_VIEWLOG}>"></a>
+					</td>
                 </tr>
             <{/foreach}>
             <{* $body *}>
