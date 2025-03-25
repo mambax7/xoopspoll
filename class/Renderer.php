@@ -60,7 +60,7 @@ class Renderer
      * @param Poll|null $poll
      * @param Helper|null $helper
      */
-    public function __construct(Poll $poll = null, Helper $helper = null)
+    public function __construct(?Poll $poll = null, ?Helper $helper = null)
     {
         $this->helper = $helper ?? Helper::getInstance();
         // setup handlers
@@ -80,6 +80,7 @@ class Renderer
     /**
      * create html form to display poll
      * @return string html form for display
+     * @throws \SmartyException
      */
     public function renderForm(): string
     {
@@ -150,6 +151,7 @@ class Renderer
 
     /**
      * display html results to screen (echo)
+     * @throws \SmartyException
      */
     public function renderResults()
     {
@@ -168,9 +170,9 @@ class Renderer
     {
         $myts             = \MyTextSanitizer::getInstance();
         $xuEndTimestamp   = \xoops_getUserTimestamp($this->pollObj->getVar('end_time'));
-        $xuEndFormatted   = \ucfirst(\date(_MEDIUMDATESTRING, (int)$xuEndTimestamp));
+        $xuEndFormatted   = \ucfirst(\date(\_MEDIUMDATESTRING, $xuEndTimestamp));
         $xuStartTimestamp = \xoops_getUserTimestamp($this->pollObj->getVar('start_time'));
-        $xuStartFormatted = \ucfirst(\date(_MEDIUMDATESTRING, (int)$xuStartTimestamp));
+        $xuStartFormatted = \ucfirst(\date(\_MEDIUMDATESTRING, $xuStartTimestamp));
         $options          = [];
 
         //        $logHandler =  $this->helper->getHandler('Log');
